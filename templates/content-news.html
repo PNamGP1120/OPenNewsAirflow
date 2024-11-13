@@ -1,0 +1,66 @@
+{% extends 'layout/base.html' %}
+{% block title %}
+    News
+{% endblock %}
+{% block css %}
+    <style>
+        footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+
+            padding: 1rem;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="content-news">
+        <div class="icon-contact in-news">
+            <div class="heart-tact margin0">
+                <i class="fa-regular fa-heart"></i>
+                <p>900</p>
+            </div>
+            <div class="share-tact margin0">
+                <i class="fa-regular fa-comment"></i>
+                <p>20</p>
+            </div>
+            <div class="share-tact margin0">
+                <i class="fa-regular fa-share-from-square"></i>
+                <p>49</p>
+            </div>
+            <div class="mark-tact margin0">
+                <i class="fa-regular fa-bookmark"></i>
+                <p>22</p>
+            </div>
+        </div>
+        <div class="category">
+            <h3><a href="#">Category</a></h3>
+        </div>
+        <div class="title-news">
+            <h1><b>{{ news.title }}</b></h1>
+        </div>
+        <div class="img-news-content">
+            <img src="{{ news.image_url }}" alt="">
+        </div>
+        <div class="time-in-news">
+            <div>{{ news.created_at }}</div>
+            <div style="color: gray">{{ news.author }}</div>
+        </div>
+        <div class="text-news">
+            <div class="detail">
+                <p>{{ news.description }}</p>
+                <p>{{ news.content }}</p>
+            </div>
+            <div class="recommend">
+                <div><b>Recommended for you</b></div>
+                <div class="card" style="width:300px">
+                    <img class="card-img-top" src="{{ new2.image_url }}" alt="Card image">
+                    <div class="card-body">
+                        <a href=""><h5 class="card-title">{{ new2.descripton }}</h5></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,36 @@
+<nav class="nav">
+    <div class="left">
+        <div class="logo">
+            <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename = 'images/logo.jpg') }}" alt="">
+            </a>
+        </div>
+        <ul class="menu">
+            <li><a href="{{ url_for('home') }}" class="nav-link">Home</a></li>
+
+            {% for c in cates %}
+                <li><a href="{{ url_for('news_cate', category = c.name) }}" class="nav-link">{{ c.name }}</a></li>
+
+            {% endfor %}
+
+        </ul>
+    </div>
+    <div class="right">
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="search"><img src="/static/images/search-icon.png" alt="search_icon" srcset=""></button>
+        </form>
+        {% if current_user.is_authenticated %}
+            <button class="btn btn-outline-success"><a class="text-deco-non" href="{{ url_for('home') }}">
+                <img class = "log" src="{{ current_user.avatar }}" style="width: 50px !important;" alt="{{ current_user.username }}">
+                {{ current_user.name }}
+            </a></button>
+            <button class="btn btn-outline-success"><a href="{{ url_for('logout') }}" class="log">Đăng xuất</a></button>
+
+        {% else %}
+            <button class="btn btn-outline-success"><a href="{{ url_for('login') }}" class="log">Đăng nhập</a></button>
+            <button class="btn btn-outline-success"><a href="{{ url_for('register') }}" class="log">Đăng Ký</a></button>
+
+        {% endif %}
+    </div>
+</nav>
